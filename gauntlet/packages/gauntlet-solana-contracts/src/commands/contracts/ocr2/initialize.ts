@@ -62,8 +62,8 @@ export default class Initialize extends SolanaCommand {
       program.programId,
     )
 
-    const [validatorAuthority] = await PublicKey.findProgramAddress(
-      [Buffer.from(utils.bytes.utf8.encode('validator')), state.publicKey.toBuffer()],
+    const [storeAuthority] = await PublicKey.findProgramAddress(
+      [Buffer.from(utils.bytes.utf8.encode('store')), state.publicKey.toBuffer()],
       program.programId,
     )
 
@@ -127,7 +127,7 @@ export default class Initialize extends SolanaCommand {
       data: {
         state: state.publicKey.toString(),
         transmissions: transmissions.publicKey.toString(),
-        validatorAuthority: validatorAuthority.toString(),
+        storeAuthority: storeAuthority.toString(),
       },
       responses: [
         {
